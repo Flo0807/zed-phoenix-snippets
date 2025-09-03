@@ -1,0 +1,251 @@
+{
+  "LiveView module boilerplate": {
+    "prefix": "lv-module",
+    "description": "A complete LiveView module with basic structure",
+    "body": [
+      "defmodule ${1:MyApp}Web.${2:Page}Live do",
+      "  use ${1:MyApp}Web, :live_view",
+      "",
+      "  @impl Phoenix.LiveView",
+      "  def mount(_params, _session, socket) do",
+      "    {:ok, socket}",
+      "  end",
+      "",
+      "  @impl Phoenix.LiveView",
+      "  def render(assigns) do",
+      "    ~H\"\"\"",
+      "    <div>",
+      "      $3",
+      "    </div>",
+      "    \"\"\"",
+      "  end",
+      "end"
+    ]
+  },
+  "LiveView live component": {
+    "prefix": "lv-live-component-module",
+    "description": "LiveView live component module",
+    "body": [
+      "defmodule ${1:MyApp}Web.${2:Component}Component do",
+      "  use Phoenix.LiveComponent",
+      "",
+      "  @impl Phoenix.LiveComponent",
+      "  def render(assigns) do",
+      "    ~H\"\"\"",
+      "    <div>",
+      "      ${3:content}",
+      "    </div>",
+      "    \"\"\"",
+      "  end",
+      "end"
+    ]
+  },
+  "LiveView live_component call": {
+    "prefix": "lv-live-component",
+    "description": "Render a live component",
+    "body": [
+      "<.live_component module={${1:MyApp}Web.${2:Component}Component} id=\"${3:component_id}\" ${4:prop}={@${4:prop}} />"
+    ]
+  },
+  "LiveView function component": {
+    "prefix": "lv-func-component",
+    "description": "Function component definition",
+    "body": [
+      "@doc \"\"\"",
+      "${1:Component description}",
+      "\"\"\"",
+      "attr :${2:attr_name}, :${3:string}, required: ${4:true}",
+      "",
+      "def ${5:component_name}(assigns) do",
+      "  ~H\"\"\"",
+      "  <div>",
+      "    ${6:content}",
+      "  </div>",
+      "  \"\"\"",
+      "end"
+    ]
+  },
+  "LiveView attr": {
+    "prefix": "lv-attr",
+    "description": "Component attribute definition",
+    "body": ["attr :${1:name}, :${2:string}, required: ${3:true}"]
+  },
+  "LiveView slot": {
+    "prefix": "lv-slot",
+    "description": "Component slot definition",
+    "body": ["slot :${1:name}, required: ${4:true}"]
+  },
+  "LiveView mount function": {
+    "prefix": "lv-mount",
+    "description": "LiveView mount function",
+    "body": [
+      "@impl Phoenix.LiveView",
+      "def mount(_params, _session, socket) do",
+      "  $1",
+      "  {:ok, socket}",
+      "end"
+    ]
+  },
+  "LiveView handle_params": {
+    "prefix": "lv-handle-params",
+    "description": "LiveView handle_params function",
+    "body": [
+      "@impl Phoenix.LiveView",
+      "def handle_params(${1:params}, ${2:_uri}, socket) do",
+      "  $3",
+      "  {:noreply, socket}",
+      "end"
+    ]
+  },
+  "LiveView handle_event": {
+    "prefix": "lv-handle-event",
+    "description": "LiveView handle_event function",
+    "body": [
+      "@impl Phoenix.LiveView",
+      "def handle_event(\"${1:event_name}\", ${2:params}, socket) do",
+      "  $3",
+      "  {:noreply, socket}",
+      "end"
+    ]
+  },
+  "LiveView handle_info": {
+    "prefix": "lv-handle-info",
+    "description": "LiveView handle_info function",
+    "body": [
+      "@impl Phoenix.LiveView",
+      "def handle_info(${1:message}, socket) do",
+      "  $2",
+      "  {:noreply, socket}",
+      "end"
+    ]
+  },
+  "LiveView render function": {
+    "prefix": "lv-render",
+    "description": "LiveView render function with HEEx template",
+    "body": [
+      "@impl Phoenix.LiveView",
+      "def render(assigns) do",
+      "  ~H\"\"\"",
+      "  <div>",
+      "    $1",
+      "  </div>",
+      "  \"\"\"",
+      "end"
+    ]
+  },
+  "LiveView assign": {
+    "prefix": "lv-assign",
+    "description": "Assign values to socket",
+    "body": ["socket = assign(socket, :${1:key}, ${2:value})"]
+  },
+  "LiveView push_navigate": {
+    "prefix": "lv-push-navigate",
+    "description": "Push navigation to another route",
+    "body": ["socket = push_navigate(socket, to: ~p\"/${1:path}\")"]
+  },
+  "LiveView push_patch": {
+    "prefix": "lv-push-patch",
+    "description": "Push patch to update current route params",
+    "body": ["socket = push_patch(socket, to: ~p\"/${1:path}\")"]
+  },
+  "LiveView put_flash": {
+    "prefix": "lv-flash",
+    "description": "Put flash message",
+    "body": ["socket = put_flash(socket, :${1:info}, \"${2:Message}\")"]
+  },
+  "LiveView pubsub subscribe": {
+    "prefix": "lv-subscribe",
+    "description": "Subscribe to PubSub topic and check if LiveView is connected",
+    "body": [
+      "if connected?(socket) do",
+      "  Phoenix.PubSub.subscribe(${1:MyApp}.PubSub, \"${2:topic}\")",
+      "end"
+    ]
+  },
+  "LiveView form with phx-change and phx-submit": {
+    "prefix": "lv-form",
+    "description": "Form with LiveView event bindings",
+    "body": [
+      "<.form for={@${1:form}} phx-change=\"${2:validate}\" phx-submit=\"${3:save}\">",
+      "  $4",
+      "</.form>"
+    ]
+  },
+  "LiveView input field": {
+    "prefix": "lv-input",
+    "description": "Form input field with error handling",
+    "body": [
+      "<.input field={@${1:form}[:${2:field_name}]} type=\"${3:text}\" label=\"${4:Label}\" />"
+    ]
+  },
+  "LiveView button with phx-click": {
+    "prefix": "lv-button",
+    "description": "Button component with phx-click event",
+    "body": [
+      "<.button phx-click=\"${1:event_name}\">",
+      "  ${2:Button Text}",
+      "</.button>"
+    ]
+  },
+  "LiveView href link": {
+    "prefix": "lv-link-href",
+    "description": "Link component with href attribute",
+    "body": ["<.link href=\"/${1:path}\">", "  ${2:Link Text}", "</.link>"]
+  },
+  "LiveView navigate link": {
+    "prefix": "lv-link-navigate",
+    "description": "Link component with navigate attribute",
+    "body": [
+      "<.link navigate={~p\"/${1:path}\"}>",
+      "  ${2:Link Text}",
+      "</.link>"
+    ]
+  },
+  "LiveView patch link": {
+    "prefix": "lv-link-patch",
+    "description": "Link component with patch attribute",
+    "body": ["<.link patch={~p\"/${1:path}\"}>", "  ${2:Link Text}", "</.link>"]
+  },
+  "LiveView heroicon": {
+    "prefix": "lv-heroicon",
+    "description": "Heroicon component",
+    "body": ["<.icon name=\"hero-${1:name}\" class=\"$2\" />"]
+  },
+  "LiveView conditional render": {
+    "prefix": "lv-if",
+    "description": "Conditional rendering in HEEx template",
+    "body": ["<%= if ${1:condition} do %>", "  ${2:content}", "<% end %>"]
+  },
+  "LiveView conditional render with else": {
+    "prefix": "lv-if-else",
+    "description": "Conditional rendering with else in HEEx template",
+    "body": [
+      "<%= if ${1:condition} do %>",
+      "  ${2:content}",
+      "<% else %>",
+      "  ${3:else_content}",
+      "<% end %>"
+    ]
+  },
+  "LiveView for comprehension": {
+    "prefix": "lv-for",
+    "description": "For comprehension in HEEx template",
+    "body": [
+      "<%= for ${1:item} <- @${2:items} do %>",
+      "  ${3:content}",
+      "<% end %>"
+    ]
+  },
+  "Phoenix pubsub broadcast": {
+    "prefix": "phx-broadcast",
+    "description": "Broadcast message via PubSub",
+    "body": [
+      "Phoenix.PubSub.broadcast(${1:MyApp}.PubSub, \"${2:topic}\", ${3:message})"
+    ]
+  },
+  "Phoenix pubsub subscribe": {
+    "prefix": "phx-subscribe",
+    "description": "Subscribe to PubSub topic",
+    "body": ["Phoenix.PubSub.subscribe(${1:MyApp}.PubSub, \"${2:topic}\")"]
+  }
+}
