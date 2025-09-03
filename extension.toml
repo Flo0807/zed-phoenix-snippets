@@ -1,0 +1,7 @@
+id = "phoenix-snippets"
+name = "Phoenix Snippets"
+version = "0.0.1"
+schema_version = 1
+authors = ["Florian Arens <info@farens.me>"]
+description = "Phoenix and LiveView snippets for Zed IDE. A collection of Phoenix and LiveView snippets to improve your development speed."
+repository = "https://github.com/Flo0807/zed-phoenix-snippets"
