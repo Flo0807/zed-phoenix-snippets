@@ -11,7 +11,7 @@ A collection of Phoenix and LiveView snippets for Zed IDE. 🔮
 ```bash
 git clone https://github.com/Flo0807/zed-phoenix-snippets
 ```
-2. Go to **Extensions** menu in Zed IDE (CTRL + Shift + X)
+2. Go to **Extensions** menu in Zed IDE
 3. Click "Install Dev Extension"
 4. Select the cloned folder
 
